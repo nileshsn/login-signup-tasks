@@ -1,6 +1,6 @@
 # Login
-
-import React, { useState } from 'react'
+``` 
+import React, { useState } from 'react' 
 import Navbar from '../../components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import PasswordInput from '../../components/Input/PasswordInput'
@@ -94,14 +94,14 @@ const Login = () => {
     );
 };
 
-export default Login
-
+export default Login 
+```
 
 
 
 
 # ForgotPassword
-
+```
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
@@ -197,13 +197,13 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword; 
-
+```
 
 
 
 
 # ResetPassword
-
+```
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
@@ -300,3 +300,4 @@ const ResetPassword = () => {
 };
 
 export default ResetPassword; 
+```
