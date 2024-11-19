@@ -1,112 +1,106 @@
-// import React, { useState } from 'react'
-// import Navbar from '../../components/Navbar/Navbar'
-// import { Link, useNavigate } from 'react-router-dom'
-// import PasswordInput from '../../components/Input/PasswordInput'
-// import { validateEmail, validatePassword } from '../../utils/helper';
-// import axiosInstance from '../../utils/axiosInstance';
+# Login
 
-// const Login = () => {
+import React, { useState } from 'react'
+import Navbar from '../../components/Navbar/Navbar'
+import { Link, useNavigate } from 'react-router-dom'
+import PasswordInput from '../../components/Input/PasswordInput'
+import { validateEmail, validatePassword } from '../../utils/helper';
+import axiosInstance from '../../utils/axiosInstance';
 
-//     const navigate = useNavigate();
+const Login = () => {
 
-//     const [email, setEmail] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-//     const handleLogin = async (e) => {
-//         e.preventDefault();
-//         if (!validateEmail(email)) {
-//             setError("Please enter a valid email address");
-//             return;
-//         }
-//         if (!validatePassword(password)) {
-//             setError("Please enter the password");
-//             return;
-//         }
-//         setError("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
 
-//         // Login API Call
-//         try {
-//             const response = await axiosInstance.post("/login", {
-//                 email: email,
-//                 password: password,
-//             });
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            return;
+        }
+        if (!validatePassword(password)) {
+            setError("Please enter the password");
+            return;
+        }
+        setError("");
 
-//             // Handle successful login response
-//             if (response.data && response.data.accessToken) {
-//                 localStorage.setItem("token", response.data.accessToken);
-//                 navigate("/dashboard");
-//             }
-//         } catch (error) {
-//             // Handle login error
-//             if (error.response && error.response.data && error.response.data.message) {
-//                 setError(error.response.data.message);
-//             } else {
-//                 setError("An unexpected error occurred, Please try again.");
-//             }
-//         }
-//     };
+        // Login API Call
+        try {
+            const response = await axiosInstance.post("/login", {
+                email: email,
+                password: password,
+            });
 
-//     return (
-//         <>
-//             <Navbar />
+            // Handle successful login response
+            if (response.data && response.data.accessToken) {
+                localStorage.setItem("token", response.data.accessToken);
+                navigate("/dashboard");
+            }
+        } catch (error) {
+            // Handle login error
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message);
+            } else {
+                setError("An unexpected error occurred, Please try again.");
+            }
+        }
+    };
 
-//             <div className='flex justify-center items-center mt-28'>
-//                 <div className='w-96 border rounded bg-white px-7 py-10'>
-//                     <form onSubmit={handleLogin}>
-//                         <h4 className='text-2xl mb-7'>Login</h4>
+    return (
+        <>
+            <Navbar />
 
-//                         <input
-//                             type="text"
-//                             placeholder='Email'
-//                             className='input-box'
-//                             value={email}
-//                             onChange={(e) => setEmail(e.target.value)}
-//                         />
+            <div className='flex justify-center items-center mt-28'>
+                <div className='w-96 border rounded bg-white px-7 py-10'>
+                    <form onSubmit={handleLogin}>
+                        <h4 className='text-2xl mb-7'>Login</h4>
 
-//                         <PasswordInput
-//                             value={password}
-//                             onChange={(e) => setPassword(e.target.value)}
-//                         />
+                        <input
+                            type="text"
+                            placeholder='Email'
+                            className='input-box'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-//                         <div className="flex justify-end mb-4">
-//                             <Link to="/forgot-password" className="text-sm text-primary hover:underline">
-//                                 Forgot Password?
-//                             </Link>
-//                         </div>
+                        <PasswordInput
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-//                         {error && <p className='text-red-500 text-xs pb-1'>{error}</p>}
+                        <div className="flex justify-end mb-4">
+                            <Link to="/forgot-password" className="text-sm text-primary hover:underline">
+                                Forgot Password?
+                            </Link>
+                        </div>
 
-//                         <button type='submit' className='btn-primary'>Login</button>
+                        {error && <p className='text-red-500 text-xs pb-1'>{error}</p>}
 
-//                         <p className='text-sm text-center mt-4'>
-//                             Don't have an account?{" "}
-//                             <Link to="/signup" className='font-medium text-primary underline'>
-//                                 Create an account
-//                             </Link>
-//                         </p>
-//                     </form>
-//                 </div>
-//             </div>
-//         </>
-//     );
-// };
+                        <button type='submit' className='btn-primary'>Login</button>
 
-// export default Login
+                        <p className='text-sm text-center mt-4'>
+                            Don't have an account?{" "}
+                            <Link to="/signup" className='font-medium text-primary underline'>
+                                Create an account
+                            </Link>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </>
+    );
+};
 
-
-
-
+export default Login
 
 
 
 
 
-
-
-
-
-
+# ForgotPassword
 
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
@@ -208,7 +202,7 @@ export default ForgotPassword;
 
 
 
-
+# ResetPassword
 
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
